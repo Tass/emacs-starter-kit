@@ -73,4 +73,6 @@
 (if (file-exists-p user-specific-dir)
   (mapc #'load (directory-files user-specific-dir nil ".*el$")))
 
+(add-to-list 'load-path "~/.emacs.d/icicles")
+(require 'icicles)
 ;;; init.el ends here
