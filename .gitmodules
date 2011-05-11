@@ -1,3 +1,6 @@
 [submodule "icicles"]
 	path = icicles
 	url = https://github.com/emacsmirror/icicles.git
+[submodule "nimrod-mode"]
+	path = nimrod-mode
+	url = ./nimrod-mode

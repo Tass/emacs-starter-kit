@@ -75,4 +75,7 @@
 
 (add-to-list 'load-path "~/.emacs.d/icicles")
 (require 'icicles)
+
+(add-to-list 'load-path "~/.emacs.d/nimrod-mode")
+(require 'nimrod-mode)
 ;;; init.el ends here
