@@ -81,5 +81,6 @@
 (require 'xcscope)
 
 (setq viper-mode t)
+(setq viper-custom-file-name "~/.emacs.d/viper-config")
 (require 'viper)
 ;;; init.el ends here
