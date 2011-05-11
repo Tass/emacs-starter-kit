@@ -78,4 +78,5 @@
 
 (add-to-list 'load-path "~/.emacs.d/nimrod-mode")
 (require 'nimrod-mode)
+(require 'xcscope)
 ;;; init.el ends here
