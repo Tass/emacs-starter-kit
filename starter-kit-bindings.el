@@ -89,5 +89,7 @@
 (define-key global-map "\C-cl" 'org-store-link)
 (define-key global-map "\C-ca" 'org-agenda)
 
+;; Movements
+(global-set-key (kbd "M-{") 'backward-paragraph)
 (provide 'starter-kit-bindings)
 ;;; starter-kit-bindings.el ends here
