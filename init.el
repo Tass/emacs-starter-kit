@@ -82,4 +82,10 @@
 (setq viper-mode t)
 (setq viper-custom-file-name "~/.emacs.d/viper-config")
 (require 'viper)
+
+(setq inferior-lisp-program "/usr/bin/clisp")
+(add-to-list 'load-path "/usr/share/emacs/site-lisp/slime/")
+(require 'slime)
+(slime-setup)
+
 ;;; init.el ends here
