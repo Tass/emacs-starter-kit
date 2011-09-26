@@ -78,7 +78,6 @@
 
 (add-to-list 'load-path "~/.emacs.d/nimrod-mode")
 (require 'nimrod-mode)
-(require 'xcscope)
 
 (setq viper-mode t)
 (setq viper-custom-file-name "~/.emacs.d/viper-config")
