@@ -79,13 +79,13 @@
 (add-to-list 'load-path "~/.emacs.d/nimrod-mode")
 (require 'nimrod-mode)
 
-(setq viper-mode t)
-(setq viper-custom-file-name "~/.emacs.d/viper-config")
-(require 'viper)
-
 (setq inferior-lisp-program "/usr/bin/clisp")
 (add-to-list 'load-path "/usr/share/emacs/site-lisp/slime/")
 (require 'slime)
 (slime-setup)
+
+(add-to-list 'load-path "~/.emacs.d/evil")
+(require 'evil)
+(evil-mode 1)
 
 ;;; init.el ends here
