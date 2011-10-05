@@ -88,4 +88,8 @@
 (require 'evil)
 (evil-mode 1)
 
+(add-to-list 'load-path "~/.emacs.d/undo-tree")
+(require 'undo-tree)
+(global-undo-tree-mode)
+
 ;;; init.el ends here
