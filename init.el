@@ -87,6 +87,8 @@
 (add-to-list 'load-path "~/.emacs.d/evil")
 (require 'evil)
 (evil-mode 1)
+(setq evil-auto-indent 't)
+(setq evil-shift-width 2)
 
 (add-to-list 'load-path "~/.emacs.d/undo-tree")
 (require 'undo-tree)
