@@ -100,6 +100,8 @@
 (add-to-list 'load-path "/usr/share/emacs/site-lisp/ecb")
 (require 'ecb)
 
+(require 'pastebin)
+
 ; Stuff for window management
 
 (defun detach-window () (interactive) (let ((new-frame (save-excursion(make-frame-command)))) (delete-window) (select-frame new-frame)))
