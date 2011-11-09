@@ -97,6 +97,9 @@
 (autoload 'pkgbuild-mode "pkgbuild-mode.el" "PKGBUILD mode." t)
 (setq auto-mode-alist (append '(("/PKGBUILD$" . pkgbuild-mode)) auto-mode-alist))
 
+(add-to-list 'load-path "/usr/share/emacs/site-lisp/ecb")
+(require 'ecb)
+
 ; Stuff for window management
 
 (defun detach-window () (interactive) (let ((new-frame (save-excursion(make-frame-command)))) (delete-window) (select-frame new-frame)))
