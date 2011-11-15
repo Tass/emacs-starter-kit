@@ -100,7 +100,8 @@
 (add-to-list 'load-path "/usr/share/emacs/site-lisp/ecb")
 (require 'ecb)
 
-(require 'pastebin)
+(add-to-list 'load-path "~/.emacs.d/gist.el")
+(require 'gist)
 
 ; Stuff for window management
 
