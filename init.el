@@ -73,10 +73,12 @@
 (if (file-exists-p user-specific-dir)
   (mapc #'load (directory-files user-specific-dir nil ".*el$")))
 
-(add-to-list 'load-path "~/.emacs.d/icicles")
+(add-to-list 'load-path (concat dotfiles-dir "vendor"))
+(progn (cd (concat dotfiles-dir "vendor"))
+       (normal-top-level-add-subdirs-to-load-path))
+
 (require 'icicles)
 
-(add-to-list 'load-path "~/.emacs.d/nimrod-mode")
 (require 'nimrod-mode)
 
 (setq inferior-lisp-program "/usr/bin/sbcl")
@@ -84,13 +86,11 @@
 (require 'slime)
 (slime-setup)
 
-(add-to-list 'load-path "~/.emacs.d/evil")
 (require 'evil)
 (evil-mode 1)
 (setq evil-auto-indent 't)
 (setq evil-shift-width 2)
 
-(add-to-list 'load-path "~/.emacs.d/undo-tree")
 (require 'undo-tree)
 (global-undo-tree-mode)
 
@@ -100,7 +100,6 @@
 (add-to-list 'load-path "/usr/share/emacs/site-lisp/ecb")
 (require 'ecb)
 
-(add-to-list 'load-path "~/.emacs.d/gist.el")
 (require 'gist)
 
 ; Stuff for window management
