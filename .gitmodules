@@ -1,12 +1,15 @@
 [submodule "icicles"]
-	path = icicles
+	path = vendor/icicles
 	url = https://github.com/emacsmirror/icicles.git
 [submodule "nimrod-mode"]
-	path = nimrod-mode
+	path = vendor/nimrod-mode
 	url = https://github.com/eegg/nimrod-mode.git
 [submodule "evil"]
-	path = evil
+	path = vendor/evil
 	url = git://gitorious.org/evil/evil.git
 [submodule "undo-tree"]
-	path = undo-tree
+	path = vendor/undo-tree
 	url = http://www.dr-qubit.org/git/undo-tree.git
+[submodule "gist.el"]
+	path = vendor/gist.el
+	url = https://github.com/defunkt/gist.el.git
