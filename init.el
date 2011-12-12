@@ -90,6 +90,7 @@
 (evil-mode 1)
 (setq evil-auto-indent 't)
 (setq evil-shift-width 2)
+(define-key evil-insert-state-map (kbd "RET") 'reindent-then-newline-and-indent) 
 
 (require 'undo-tree)
 (global-undo-tree-mode)
