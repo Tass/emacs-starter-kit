@@ -92,6 +92,13 @@
 (setq evil-shift-width 2)
 (define-key evil-insert-state-map (kbd "RET") 'reindent-then-newline-and-indent) 
 
+(add-hook 'python-mode-hook
+  (function (lambda ()
+          (setq evil-shift-width python-indent))))
+(add-hook 'ruby-mode-hook
+  (function (lambda ()
+          (setq evil-shift-width ruby-indent-level))))
+
 (require 'undo-tree)
 (global-undo-tree-mode)
 
