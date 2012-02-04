@@ -117,5 +117,9 @@
 (defun detach-window () (interactive) (let ((new-frame (save-excursion(make-frame-command)))) (delete-window) (select-frame new-frame)))
 (global-set-key (kbd "C-x 2") 'detach-window)
 
+# set frame title so the window manager can read it
+(setq frame-title-format
+  '(:eval (or (buffer-file-name (current-buffer)) "#<none>")))
+
 (server-start)
 ;;; init.el ends here
