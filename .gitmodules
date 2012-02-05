@@ -13,3 +13,6 @@
 [submodule "gist.el"]
 	path = vendor/gist.el
 	url = https://github.com/defunkt/gist.el.git
+[submodule "vendor/showoff-mode"]
+	path = vendor/showoff-mode
+	url = https://github.com/developernotes/showoff-mode.git
