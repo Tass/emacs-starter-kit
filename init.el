@@ -112,6 +112,8 @@
 
 (add-to-list 'auto-mode-alist '("\\.thor\\'" . ruby-mode))
 
+(require 'tramp)
+
 ; Stuff for window management
 
 (defun detach-window () (interactive) (let ((new-frame (save-excursion(make-frame-command)))) (delete-window) (select-frame new-frame)))
