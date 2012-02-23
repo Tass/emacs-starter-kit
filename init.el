@@ -114,6 +114,9 @@
 
 (require 'tramp)
 
+(require 'edit-server)
+(edit-server-start)
+
 ; Stuff for window management
 
 (defun detach-window () (interactive) (let ((new-frame (save-excursion(make-frame-command)))) (delete-window) (select-frame new-frame)))
