@@ -16,3 +16,9 @@
 [submodule "vendor/showoff-mode"]
 	path = vendor/showoff-mode
 	url = https://github.com/developernotes/showoff-mode.git
+[submodule "vendor/smarttabs"]
+	path = vendor/smarttabs
+	url = https://github.com/jcsalomon/smarttabs.git
+[submodule "vendor/evil-rails"]
+	path = vendor/evil-rails
+	url = https://github.com/antono/evil-rails.git
