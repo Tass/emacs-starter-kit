@@ -117,6 +117,16 @@
 (require 'edit-server)
 (edit-server-start)
 
+; assorted stuff
+(require 'tempo-snippets)
+
+(autoload 'test-case-mode "test-case-mode" nil t)
+(autoload 'enable-test-case-mode-if-test "test-case-mode")
+(autoload 'test-case-find-all-tests "test-case-mode" nil t)
+(autoload 'test-case-compilation-finish-run-all "test-case-mode")
+(add-hook 'find-file-hook 'enable-test-case-mode-if-test)
+(add-hook 'compilation-finish-functions 'test-case-compilation-finish-run-all)
+
 ; Stuff for window management
 
 (defun detach-window () (interactive) (let ((new-frame (save-excursion(make-frame-command)))) (delete-window) (select-frame new-frame)))
