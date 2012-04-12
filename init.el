@@ -131,29 +131,6 @@
 (add-hook 'find-file-hook 'enable-test-case-mode-if-test)
 (add-hook 'compilation-finish-functions 'test-case-compilation-finish-run-all)
 
-; SmartTabs
-(require 'smart-tabs-mode)
-;; C/C++
-(add-hook 'c-mode-hook 'smart-tabs-mode-enable)
-(smart-tabs-advice c-indent-line c-basic-offset)
-(smart-tabs-advice c-indent-region c-basic-offset)
-
-;; JavaScript
-(add-hook 'js2-mode-hook 'smart-tabs-mode-enable)
-(smart-tabs-advice js2-indent-line js2-basic-offset)
-
-;; Perl (cperl-mode)
-(add-hook 'cperl-mode-hook 'smart-tabs-mode-enable)
-(smart-tabs-advice cperl-indent-line cperl-indent-level)
-
-;; Python
-(add-hook 'python-mode-hook 'smart-tabs-mode-enable)
-(smart-tabs-advice python-indent-line-1 python-indent)
-
-;; Ruby
-(add-hook 'ruby-mode-hook 'smart-tabs-mode-enable)
-(smart-tabs-advice ruby-indent-line ruby-indent-level)
-
 ; Stuff for window management
 
 (defun detach-window () (interactive) (let ((new-frame (save-excursion(make-frame-command)))) (delete-window) (select-frame new-frame)))
