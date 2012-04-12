@@ -92,6 +92,8 @@
 (setq evil-auto-indent 't)
 (setq evil-shift-width 2)
 (define-key evil-insert-state-map (kbd "RET") 'reindent-then-newline-and-indent) 
+(add-hook 'text-mode-hook
+  (function (lambda () (define-key evil-insert-state-map (kbd "RET") 'newline))))
 
 (add-hook 'python-mode-hook
   (function (lambda ()
