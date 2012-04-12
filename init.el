@@ -117,6 +117,10 @@
 (require 'edit-server)
 (edit-server-start)
 
+; r-mode
+(setq load-path (cons "/usr/share/emacs/site-lisp/ess" load-path))
+(require 'ess-site)
+
 ; assorted stuff
 (require 'tempo-snippets)
 
