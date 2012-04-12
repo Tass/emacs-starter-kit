@@ -73,8 +73,9 @@
 (if (file-exists-p user-specific-dir)
   (mapc #'load (directory-files user-specific-dir nil ".*el$")))
 
-(add-to-list 'load-path (concat dotfiles-dir "vendor"))
-(progn (cd (concat dotfiles-dir "vendor"))
+(setq vendor-dir (concat dotfiles-dir "vendor/"))
+(add-to-list 'load-path vendor-dir)
+(progn (cd vendor-dir)
        (normal-top-level-add-subdirs-to-load-path))
 
 (require 'icicles)
@@ -156,5 +157,9 @@
 (yas/initialize)
 (yas/load-directory "/usr/share/emacs/site-lisp/yas/snippets")
 (yas/load-directory (concat dotfiles-dir "snippets"))
+
+(require 'auto-complete-config)
+(add-to-list 'ac-dictionary-directories (concat vendor-dir "auto-complete/dict"))
+(ac-config-default)
 
 ;;; init.el ends here

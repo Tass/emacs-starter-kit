@@ -25,3 +25,6 @@
 [submodule "vendor/auto-complete"]
 	path = vendor/auto-complete
 	url = https://github.com/m2ym/auto-complete.git
+[submodule "vendor/popup-el"]
+	path = vendor/popup-el
+	url = https://github.com/m2ym/popup-el.git
