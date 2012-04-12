@@ -148,4 +148,7 @@
     ad-do-it))
 (ad-activate 'save-buffers-kill-terminal)
 
+(define-key lisp-interaction-mode-map (kbd "C-c x") 'le::eval-and-insert-results)
+(setq show-paren-style 'expression)
+
 ;;; init.el ends here
