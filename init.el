@@ -140,4 +140,12 @@
 (setq frame-title-format
   '(:eval (or (buffer-file-name (current-buffer)) "#<none>")))
 
+; block C-x C-c
+(defadvice save-buffers-kill-terminal (around dont-kill-my-x-session-kthx)
+  "Disable C-x C-c under X."
+  (if (or (eq window-system 'x) (eq window-system 'w32))
+      (message "I'm afraid I can't do that.")
+    ad-do-it))
+(ad-activate 'save-buffers-kill-terminal)
+
 ;;; init.el ends here
