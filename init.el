@@ -151,4 +151,10 @@
 (define-key lisp-interaction-mode-map (kbd "C-c x") 'le::eval-and-insert-results)
 (setq show-paren-style 'expression)
 
+(add-to-list 'load-path "/usr/share/emacs/site-lisp/yas")
+(require 'yasnippet) ;; not yasnippet-bundle
+(yas/initialize)
+(yas/load-directory "/usr/share/emacs/site-lisp/yas/snippets")
+(yas/load-directory (concat dotfiles-dir "snippets"))
+
 ;;; init.el ends here
