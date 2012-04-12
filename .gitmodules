@@ -22,3 +22,6 @@
 [submodule "vendor/evil-rails"]
 	path = vendor/evil-rails
 	url = https://github.com/antono/evil-rails.git
+[submodule "vendor/auto-complete"]
+	path = vendor/auto-complete
+	url = https://github.com/m2ym/auto-complete.git
