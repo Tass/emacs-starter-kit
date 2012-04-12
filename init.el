@@ -164,4 +164,11 @@
 (add-to-list 'ac-dictionary-directories (concat vendor-dir "auto-complete/dict"))
 (ac-config-default)
 
+(require 'coffee-mode)
+(add-to-list 'auto-mode-alist '("\.coffee$" . coffee-mode))
+(add-to-list 'auto-mode-alist '("Cakefile" . coffee-mode))
+(add-hook 'coffee-mode-hook
+  (function (lambda () (define-key coffee-mode-map [remap newline-and-indent] 'coffee-newline-and-indent)
+              (add-to-list 'coffee-indenters-eol ?=))))
+
 ;;; init.el ends here
