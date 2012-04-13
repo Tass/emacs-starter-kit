@@ -8,7 +8,8 @@
 ;; Load path etc.
 
 (add-to-list 'load-path user-emacs-directory)
-(set-default-font "DejaVu Sans Mono-12")
+
+(set-face-attribute 'default nil :height 120)
 
 ;; Load up ELPA, the package manager
 
