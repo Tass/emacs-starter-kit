@@ -5,36 +5,28 @@
 ;; and brighter; it simply makes everything else vanish."
 ;; -Neal Stephenson, "In the Beginning was the Command Line"
 
-;; Turn off mouse interface early in startup to avoid momentary display
-;; You really don't need these; trust me.
-(if (fboundp 'menu-bar-mode) (menu-bar-mode -1))
-(if (fboundp 'tool-bar-mode) (tool-bar-mode -1))
-(if (fboundp 'scroll-bar-mode) (scroll-bar-mode -1))
-
 ;; Load path etc.
 
-(setq dotfiles-dir (file-name-directory
-                    (or (buffer-file-name) load-file-name)))
+(add-to-list 'load-path user-emacs-directory)
+(set-default-font "DejaVu Sans Mono-12")
 
 ;; Load up ELPA, the package manager
 
-(add-to-list 'load-path dotfiles-dir)
-
-(setq package-user-dir (concat dotfiles-dir "elpa"))
+(setq package-user-dir (concat user-emacs-directory "elpa"))
 
 (require 'package)
 (add-to-list 'package-archives
              '("marmalade" . "http://marmalade-repo.org/packages/") t)
 (package-initialize)
 
-(defvar my-packages '(starter-kit starter-kit-lisp starter-kit-bindings starter-kit-js starter-kit-ruby gist haml-mode magit predit pastie ruby-mode yasnippet-bundle)
+(defvar my-packages '(starter-kit starter-kit-lisp starter-kit-bindings starter-kit-js starter-kit-ruby gist haml-mode magit paredit pastie ruby-mode yasnippet-bundle)
   "A list of packages to ensure are installed at launch.")
 
 (dolist (p my-packages)
   (when (not (package-installed-p p))
     (package-install p)))
 
-(setq vendor-dir (concat dotfiles-dir "vendor/"))
+(setq vendor-dir (concat user-emacs-directory "vendor/"))
 (add-to-list 'load-path vendor-dir)
 (progn (cd vendor-dir)
        (normal-top-level-add-subdirs-to-load-path))
@@ -69,14 +61,9 @@
 (autoload 'pkgbuild-mode "pkgbuild-mode.el" "PKGBUILD mode." t)
 (setq auto-mode-alist (append '(("/PKGBUILD$" . pkgbuild-mode)) auto-mode-alist))
 
-(add-to-list 'load-path "/usr/share/emacs/site-lisp/ecb")
-(require 'ecb)
-
 (require 'gist)
 
 (add-to-list 'auto-mode-alist '("\\.thor\\'" . ruby-mode))
-
-(require 'tramp)
 
 (require 'edit-server)
 (edit-server-start)
@@ -112,6 +99,7 @@
     ad-do-it))
 (ad-activate 'save-buffers-kill-terminal)
 
+(require 'le-eval-and-insert-results)
 (define-key lisp-interaction-mode-map (kbd "C-c x") 'le::eval-and-insert-results)
 (setq show-paren-style 'expression)
 
@@ -119,7 +107,7 @@
 (require 'yasnippet) ;; not yasnippet-bundle
 (yas/initialize)
 (yas/load-directory "/usr/share/emacs/site-lisp/yas/snippets")
-(yas/load-directory (concat dotfiles-dir "snippets"))
+(yas/load-directory (concat user-emacs-directory "snippets"))
 
 (require 'auto-complete-config)
 (add-to-list 'ac-dictionary-directories (concat vendor-dir "auto-complete/dict"))
