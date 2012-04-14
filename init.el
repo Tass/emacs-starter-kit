@@ -118,5 +118,10 @@
   (function (lambda () (define-key coffee-mode-map [remap newline-and-indent] 'coffee-newline-and-indent)
               (add-to-list 'coffee-indenters-eol ?=))))
 
+(autoload 'markdown-mode "markdown-mode.el"
+   "Major mode for editing Markdown files" t)
+(setq auto-mode-alist
+   (cons '("\\.md" . markdown-mode) auto-mode-alist))
+
 (set-face-attribute 'default nil :height 100)
 ;;; init.el ends here
