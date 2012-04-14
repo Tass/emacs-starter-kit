@@ -102,11 +102,9 @@
 (define-key lisp-interaction-mode-map (kbd "C-c x") 'le::eval-and-insert-results)
 (setq show-paren-style 'expression)
 
-(add-to-list 'load-path "/usr/share/emacs/site-lisp/yas")
-(require 'yasnippet) ;; not yasnippet-bundle
-(yas/initialize)
-(yas/load-directory "/usr/share/emacs/site-lisp/yas/snippets")
-(yas/load-directory (concat user-emacs-directory "snippets"))
+(require 'yasnippet)
+(yas/global-mode 1)
+(setq yas/snippet-dirs '((concat user-emacs-directory "snippets")))
 
 (require 'auto-complete-config)
 (add-to-list 'ac-dictionary-directories (concat vendor-dir "auto-complete/dict"))
