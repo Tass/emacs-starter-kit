@@ -9,8 +9,6 @@
 
 (add-to-list 'load-path user-emacs-directory)
 
-(set-face-attribute 'default nil :height 120)
-
 ;; Load up ELPA, the package manager
 
 (setq package-user-dir (concat user-emacs-directory "elpa"))
@@ -112,6 +110,7 @@
 
 (require 'auto-complete-config)
 (add-to-list 'ac-dictionary-directories (concat vendor-dir "auto-complete/dict"))
+(add-to-list 'ac-sources 'ac-source-yasnippet)
 (ac-config-default)
 
 (require 'coffee-mode)
@@ -121,4 +120,5 @@
   (function (lambda () (define-key coffee-mode-map [remap newline-and-indent] 'coffee-newline-and-indent)
               (add-to-list 'coffee-indenters-eol ?=))))
 
+(set-face-attribute 'default nil :height 100)
 ;;; init.el ends here
