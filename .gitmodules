@@ -34,3 +34,6 @@
 [submodule "vendor/markdown-mode"]
 	path = vendor/markdown-mode
 	url = git://jblevins.org/git/markdown-mode.git
+[submodule "vendor/coffee-mode"]
+	path = vendor/coffee-mode
+	url = https://github.com/defunkt/coffee-mode.git

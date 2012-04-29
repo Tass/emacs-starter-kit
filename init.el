@@ -114,9 +114,13 @@
 (require 'coffee-mode)
 (add-to-list 'auto-mode-alist '("\.coffee$" . coffee-mode))
 (add-to-list 'auto-mode-alist '("Cakefile" . coffee-mode))
+(setq-default tab-width 4)
+(defun coffee-custom ()
+  "coffee-mode-hook"
+ (set (make-local-variable 'tab-width) 2))
+
 (add-hook 'coffee-mode-hook
-  (function (lambda () (define-key coffee-mode-map [remap newline-and-indent] 'coffee-newline-and-indent)
-              (add-to-list 'coffee-indenters-eol ?=))))
+  '(lambda() (coffee-custom)))
 
 (autoload 'markdown-mode "markdown-mode.el"
    "Major mode for editing Markdown files" t)
