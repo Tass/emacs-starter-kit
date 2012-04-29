@@ -129,10 +129,23 @@
 (setq-default tab-width 4)
 (defun coffee-custom ()
   "coffee-mode-hook"
- (set (make-local-variable 'tab-width) 2))
 
-(add-hook 'coffee-mode-hook
-  '(lambda() (coffee-custom)))
+  ;; CoffeeScript uses two spaces.
+  (make-local-variable 'tab-width)
+  (set 'tab-width 2)
+
+  ;; If you don't want your compiled files to be wrapped
+  (setq coffee-args-compile '("-c" "--bare"))
+
+  ;; *Messages* spam
+  (setq coffee-debug-mode t)
+
+  ;; Compile '.coffee' files on every save
+  (and (file-exists-p (buffer-file-name))
+       (file-exists-p (coffee-compiled-file-name))
+       (coffee-cos-mode t)))
+
+(add-hook 'coffee-mode-hook 'coffee-custom)
 
 (autoload 'markdown-mode "markdown-mode.el"
    "Major mode for editing Markdown files" t)
