@@ -140,4 +140,7 @@
    (cons '("\\.md" . markdown-mode) auto-mode-alist))
 
 (set-face-attribute 'default nil :height 100)
+
+(load "auctex.el" nil t t)
+(load "preview-latex.el" nil t t)
 ;;; init.el ends here
