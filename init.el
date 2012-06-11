@@ -43,7 +43,6 @@
 (evil-mode 1)
 (setq evil-auto-indent 't)
 (setq evil-shift-width 2)
-(define-key evil-insert-state-map (kbd "RET") 'reindent-then-newline-and-indent) 
 (add-hook 'text-mode-hook
   (function (lambda () (define-key evil-insert-state-map (kbd "RET") 'newline))))
 
@@ -153,6 +152,8 @@
    (cons '("\\.md" . markdown-mode) auto-mode-alist))
 
 (set-face-attribute 'default nil :height 100)
+
+(setq x-select-enable-primary t)
 
 (load "auctex.el" nil t t)
 (load "preview-latex.el" nil t t)
