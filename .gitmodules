@@ -37,3 +37,6 @@
 [submodule "vendor/coffee-mode"]
 	path = vendor/coffee-mode
 	url = https://github.com/defunkt/coffee-mode.git
+[submodule "vendor/refheap.el"]
+	path = vendor/refheap.el
+	url = https://github.com/Raynes/refheap.el.git
