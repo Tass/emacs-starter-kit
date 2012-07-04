@@ -155,15 +155,32 @@
 
 (setq x-select-enable-primary t)
 
+;; dot-mode
+(autoload 'graphviz-dot-mode "graphviz-dot-mode.el" "graphviz dot mode." t)
+(add-to-list 'auto-mode-alist '("\.dot" . graphviz-dot-mode))
+
+(add-to-list 'org-export-latex-classes
+             '("scrartcl"
+               "\\documentclass{scrartcl}"
+               ("\\section{%s}" . "\\section*{%s}")
+               ("\\subsection{%s}" . "\\subsection*{%s}")
+               ("\\subsubsection{%s}" . "\\subsubsection*{%s}")
+               ("\\paragraph{%s}" . "\\paragraph*{%s}")
+               ("\\subparagraph{%s}" . "\\subparagraph*{%s}")))
+
+;; store your autosaved files in your system's tmp dir
+(setq auto-save-file-name-transforms `((".*" ,temporary-file-directory t)))
+
 (load "auctex.el" nil t t)
 (load "preview-latex.el" nil t t)
+
 ;;; init.el ends here
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- )
+ '(nxml-slash-auto-complete-flag t))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
