@@ -159,15 +159,6 @@
 (autoload 'graphviz-dot-mode "graphviz-dot-mode.el" "graphviz dot mode." t)
 (add-to-list 'auto-mode-alist '("\.dot" . graphviz-dot-mode))
 
-(add-to-list 'org-export-latex-classes
-             '("scrartcl"
-               "\\documentclass{scrartcl}"
-               ("\\section{%s}" . "\\section*{%s}")
-               ("\\subsection{%s}" . "\\subsection*{%s}")
-               ("\\subsubsection{%s}" . "\\subsubsection*{%s}")
-               ("\\paragraph{%s}" . "\\paragraph*{%s}")
-               ("\\subparagraph{%s}" . "\\subparagraph*{%s}")))
-
 ;; store your autosaved files in your system's tmp dir
 (setq auto-save-file-name-transforms `((".*" ,temporary-file-directory t)))
 
