@@ -72,8 +72,9 @@
 (require 'gist)
 
 (add-to-list 'auto-mode-alist '("\\.thor\\'" . ruby-mode))
-(require 'ruby-electric)
-(add-hook 'ruby-mode-hook (lambda () (ruby-electric-mode t)))
+(add-hook 'ruby-mode-hook (lambda () (ruby-end-mode)))
+(require 'autopair)
+(autopair-global-mode)
 
 (require 'edit-server)
 (edit-server-start)
