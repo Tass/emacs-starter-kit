@@ -1,5 +1,8 @@
 ;; Author: Simon Hafner hafnersimon@gmail.com
 ;; This code is public domain.
+
+(require 'org)
+
 (defun org-babel-execute:qtree (body params)
   "Reformat a block of lisp-edited tree to one tikz-qtree likes."
   (let (( tree
@@ -85,3 +88,5 @@ http://stackoverflow.com/questions/12809610/replace-regexp-in-string-with-lookah
               (setq white-count 0 whites nil))
             (write-char current)
             (setq seen-end nil seen-start nil)))))))
+
+(provide 'org-babel-qtree)
