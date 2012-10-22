@@ -10,7 +10,7 @@
 \\tikzset{every tree node/.style={align=center, anchor=north}}
 \\Tree "
                   (replace-regexp-in-string
-                   " \\_<\\w+\\_>" (lambda (x) (concat "\\\\" (substring x 1))) 
+                   " \\_<\\w+\\_>" (lambda (x) (concat "\\\\\\\\" (substring x 1))) 
                    (replace-regexp-in-string
                     (regexp-quote "]") " ]" ; qtree needs a space
                                         ; before every closing
@@ -39,3 +39,5 @@
   '(paredit-mode)          ;; other functions to call
   "A mode for qtree edits" ;; doc string for this mode
   )
+
+(provide 'org-babel-qtree)
