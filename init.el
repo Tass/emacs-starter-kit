@@ -29,6 +29,10 @@
 (add-to-list 'load-path vendor-dir)
 (progn (cd vendor-dir)
        (normal-top-level-add-subdirs-to-load-path))
+(setq org-confirm-babel-evaluate nil)
+(add-to-list 'load-path (concat vendor-dir "ensime/elisp/"))
+(require 'ensime)
+(add-hook 'scala-mode-hook 'ensime-scala-mode-hook)
 
 (require 'icicles)
 
@@ -53,6 +57,7 @@
   (function (lambda ()
           (setq evil-shift-width ruby-indent-level))))
 
+(define-key evil-normal-state-map (kbd "gt") 'find-tag)
 ;;; esc quits
 
 (define-key evil-normal-state-map [escape] 'keyboard-quit)
@@ -73,8 +78,12 @@
 
 (add-to-list 'auto-mode-alist '("\\.thor\\'" . ruby-mode))
 (add-hook 'ruby-mode-hook (lambda () (ruby-end-mode)))
+
 (require 'autopair)
-(autopair-global-mode)
+(loop
+ for mode-hook in '(ruby-mode-hook python-mode-hook)
+ do (add-hook mode-hook
+            #'(lambda ()(autopair-mode 1))))
 
 (require 'edit-server)
 (edit-server-start)
@@ -165,6 +174,7 @@
 
 (load "auctex.el" nil t t)
 (load "preview-latex.el" nil t t)
+(require 'org-babel-qtree)
 
 (require 'saveplace)
 (setq-default save-place t)
