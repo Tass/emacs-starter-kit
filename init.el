@@ -13,12 +13,21 @@
 
 (setq package-user-dir (concat user-emacs-directory "elpa"))
 
+(defun add-items-to-list (list-var elements &optional append compare-fn)
+  (mapc
+   (lambda (element) (add-to-list list-var element append compare-fn))
+   elements))
+
 (require 'package)
-(add-to-list 'package-archives
-             '("marmalade" . "http://marmalade-repo.org/packages/") t)
+(add-items-to-list 'package-archives
+                   '(
+                     ("marmalade" . "http://marmalade-repo.org/packages/")
+                     ("melpa" . "http://melpa.milkbox.net/packages/")
+                     )
+                   t)
 (package-initialize)
 
-(defvar my-packages '(starter-kit starter-kit-lisp starter-kit-bindings starter-kit-js starter-kit-ruby gist haml-mode magit paredit pastie ruby-mode yasnippet-bundle)
+(defvar my-packages '(starter-kit starter-kit-lisp starter-kit-bindings starter-kit-js starter-kit-ruby gist haml-mode magit paredit pastie yasnippet-bundle)
   "A list of packages to ensure are installed at launch.")
 
 (dolist (p my-packages)
@@ -29,12 +38,16 @@
 (add-to-list 'load-path vendor-dir)
 (progn (cd vendor-dir)
        (normal-top-level-add-subdirs-to-load-path))
+
 (setq org-confirm-babel-evaluate nil)
+
+(add-to-list 'auto-mode-alist '("\.scala" . scala-mode))
 (add-to-list 'load-path (concat vendor-dir "ensime/elisp/"))
 (require 'ensime)
 (add-hook 'scala-mode-hook 'ensime-scala-mode-hook)
 
-(require 'icicles)
+(require 'helm-config)
+(helm-mode 1)
 
 (require 'nimrod-mode)
 
@@ -53,9 +66,14 @@
 (add-hook 'python-mode-hook
   (function (lambda ()
           (setq evil-shift-width python-indent))))
-(add-hook 'ruby-mode-hook
+
+(autoload 'enh-ruby-mode "enh-ruby-mode" "Major mode for ruby files" t)
+(add-to-list 'auto-mode-alist '("\\.rb$" . enh-ruby-mode))
+(add-to-list 'interpreter-mode-alist '("ruby" . enh-ruby-mode))
+(add-hook 'enh-ruby-mode-hook
   (function (lambda ()
           (setq evil-shift-width ruby-indent-level))))
+(evil-set-initial-state "Ensime-Popup-Buffer" 'emacs)
 
 (define-key evil-normal-state-map (kbd "gt") 'find-tag)
 ;;; esc quits
@@ -76,14 +94,7 @@
 
 (require 'gist)
 
-(add-to-list 'auto-mode-alist '("\\.thor\\'" . ruby-mode))
-(add-hook 'ruby-mode-hook (lambda () (ruby-end-mode)))
-
 (require 'autopair)
-(loop
- for mode-hook in '(ruby-mode-hook python-mode-hook)
- do (add-hook mode-hook
-            #'(lambda ()(autopair-mode 1))))
 
 (require 'edit-server)
 (edit-server-start)
@@ -185,6 +196,11 @@
 
 (require 'custom-color)
 
-;;; init.el ends here
+(global-auto-revert-mode)
+
 (put 'narrow-to-region 'disabled nil)
+
+(global-set-key (kbd "<XF86Back>") 'previous-buffer)
+(global-set-key (kbd "<XF86Forward>") 'next-buffer)
+;;; init.el ends here
 
