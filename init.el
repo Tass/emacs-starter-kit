@@ -194,7 +194,8 @@
 (setq custom-file (concat user-emacs-directory "custom.el"))
 (load custom-file)
 
-(require 'custom-color)
+(add-to-list 'custom-theme-load-path "~/.emacs.d/themes")
+(load-theme 'custom t)
 
 (global-auto-revert-mode)
 
