@@ -205,5 +205,7 @@
 
 (global-set-key (kbd "<XF86Back>") 'previous-buffer)
 (global-set-key (kbd "<XF86Forward>") 'next-buffer)
+
+(add-to-list 'auto-mode-alist '("stack\\(exchange\\|overflow\\)\\.com\\.[a-z0-9]+\\.txt" . markdown-mode))
 ;;; init.el ends here
 
