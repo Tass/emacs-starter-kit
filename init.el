@@ -72,7 +72,9 @@
 (add-to-list 'interpreter-mode-alist '("ruby" . enh-ruby-mode))
 (add-hook 'enh-ruby-mode-hook
   (function (lambda ()
-          (setq evil-shift-width ruby-indent-level))))
+              (setq evil-shift-width ruby-indent-level)
+              (define-key enh-ruby-mode-map "\C-c-"    'enh-ruby-insert-end)
+              )))
 (evil-set-initial-state "Ensime-Popup-Buffer" 'emacs)
 
 (define-key evil-normal-state-map (kbd "gt") 'find-tag)
