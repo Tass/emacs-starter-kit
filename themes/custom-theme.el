@@ -4,7 +4,7 @@
 (custom-theme-set-faces
  'custom
  '(default ((t (:family "DejaVu Sans Mono" :foundry "unknown" :width normal :height 97 :weight normal :slant normal :underline nil :overline nil :strike-through nil :box nil :inverse-video nil :foreground "#7eff00" :background "#060001" :stipple nil :inherit nil))))
- '(cursor ((t (:foreground "#7eff00"))))
+ '(cursor ((t (:background "#7eff00"))))
  '(fixed-pitch ((t (:family "Monospace"))))
  '(variable-pitch ((t (:family "Sans Serif"))))
  '(escape-glyph ((t (:weight bold :foreground "#ddaa6f"))))
@@ -47,4 +47,5 @@
  '(next-error ((t (:inherit (region)))))
  '(query-replace ((t (:inherit (isearch))))))
 
+(setq evil-default-cursor t)
 (provide-theme 'custom)
