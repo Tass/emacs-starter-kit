@@ -209,3 +209,4 @@
 (add-to-list 'auto-mode-alist '("stack\\(exchange\\|overflow\\)\\.com\\.[a-z0-9]+\\.txt" . markdown-mode))
 ;;; init.el ends here
 
+(put 'erase-buffer 'disabled nil)
