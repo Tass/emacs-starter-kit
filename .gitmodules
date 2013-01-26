@@ -46,3 +46,6 @@
 [submodule "vendor/Enhanced-Ruby-Mode"]
 	path = vendor/Enhanced-Ruby-Mode
 	url = https://github.com/zenspider/enhanced-ruby-mode.git
+[submodule "vendor/evil-surround"]
+	path = vendor/evil-surround
+	url = https://github.com/timcharper/evil-surround.git
