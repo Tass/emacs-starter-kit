@@ -95,6 +95,48 @@
 (require 'surround)
 (global-surround-mode 1)
 
+(defun cofi/surround-add-pair (trigger begin-or-fun &optional end)
+  "Add a surround pair.
+If `end' is nil `begin-or-fun' will be treated as a fun."
+  (push (cons (if (stringp trigger)
+                  (string-to-char trigger)
+                trigger)
+              (if end
+                  (cons begin-or-fun end)
+                begin-or-fun))
+        surround-pairs-alist))
+
+(add-to-hooks (lambda ()
+                (cofi/surround-add-pair "`" "`"  "'"))
+              '(emacs-lisp-mode-hook lisp-mode-hook))
+(add-to-hooks (lambda ()
+                (cofi/surround-add-pair "~" "``"  "``"))
+              '(markdown-mode-hook rst-mode-hook python-mode-hook))
+(add-hook 'LaTeX-mode-hook (lambda ()
+                             (cofi/surround-add-pair "~" "\\texttt{" "}")
+                             (cofi/surround-add-pair "=" "\\verb=" "=")
+                             (cofi/surround-add-pair "/" "\\emph{" "}")
+                             (cofi/surround-add-pair "*" "\\textbf{" "}")))
+(add-to-hooks (lambda ()
+                (cofi/surround-add-pair "c" ":class:`" "`")
+                (cofi/surround-add-pair "f" ":func:`" "`")
+                (cofi/surround-add-pair "m" ":meth:`" "`")
+                (cofi/surround-add-pair "a" ":attr:`" "`")
+                (cofi/surround-add-pair "e" ":exc:`" "`"))
+              '(rst-mode-hook python-mode-hook)))
+
+(defun cofi/evil-cursor ()
+  "Change cursor color according to evil-state."
+  (let ((default "OliveDrab4")
+        (cursor-colors '((insert . "dark orange")
+                         (emacs  . "sienna")
+                         (visual . "white"))))
+    (setq cursor-type (if (eq evil-state 'visual)
+                          'hollow
+                        'bar))
+    (set-cursor-color (def-assoc evil-state cursor-colors default))))
+(setq evil-default-cursor #'cofi/evil-cursor)
+
 (require 'undo-tree)
 (global-undo-tree-mode)
 
