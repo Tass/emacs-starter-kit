@@ -87,6 +87,13 @@
 (define-key minibuffer-local-completion-map [escape] 'minibuffer-keyboard-quit)
 (define-key minibuffer-local-must-match-map [escape] 'minibuffer-keyboard-quit)
 (define-key minibuffer-local-isearch-map [escape] 'minibuffer-keyboard-quit)
+(add-hook 'post-command-hook
+          '(lambda ()
+             (modify-syntax-entry ?_ "w")))
+
+(add-hook 'emacs-lisp-mode-hook 'evil-paredit-mode)
+(require 'surround)
+(global-surround-mode 1)
 
 (require 'undo-tree)
 (global-undo-tree-mode)
@@ -207,6 +214,11 @@
 (global-set-key (kbd "<XF86Forward>") 'next-buffer)
 
 (add-to-list 'auto-mode-alist '("stack\\(exchange\\|overflow\\)\\.com\\.[a-z0-9]+\\.txt" . markdown-mode))
+
+(setq ac-trigger-key "TAB")
+(require 'projectile)
+(projectile-global-mode)
+
 ;;; init.el ends here
 
 (put 'erase-buffer 'disabled nil)
