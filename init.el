@@ -27,12 +27,10 @@
                    t)
 (package-initialize)
 
-(defvar my-packages '(starter-kit starter-kit-lisp starter-kit-bindings starter-kit-js starter-kit-ruby gist haml-mode magit paredit pastie yasnippet-bundle)
-  "A list of packages to ensure are installed at launch.")
+(add-to-list 'load-path "~/.emacs.d/el-get/el-get")
 
-(dolist (p my-packages)
-  (when (not (package-installed-p p))
-    (package-install p)))
+(require 'el-get)
+(el-get 'sync)
 
 (setq vendor-dir (concat user-emacs-directory "vendor/"))
 (add-to-list 'load-path vendor-dir)
