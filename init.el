@@ -261,6 +261,12 @@ If `end' is nil `begin-or-fun' will be treated as a fun."
 (require 'projectile)
 (projectile-global-mode)
 
+(org-babel-do-load-languages
+ 'org-babel-load-languages
+ '((dot . t)))
+
+(require 'kwin)
+
 ;;; init.el ends here
 
 (put 'erase-buffer 'disabled nil)
