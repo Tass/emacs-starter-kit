@@ -59,7 +59,6 @@
 (require 'evil)
 (evil-mode 1)
 (setq evil-auto-indent 't)
-(setq evil-shift-width 2)
 (add-hook 'text-mode-hook
   (function (lambda () (define-key evil-insert-state-map (kbd "RET") 'newline))))
 
@@ -91,6 +90,7 @@
           '(lambda ()
              (modify-syntax-entry ?_ "w")))
 
+(require 'evil-paredit)
 (add-hook 'emacs-lisp-mode-hook 'evil-paredit-mode)
 (require 'surround)
 (global-surround-mode 1)
