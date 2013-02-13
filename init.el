@@ -40,7 +40,15 @@
 (setq org-confirm-babel-evaluate nil)
 
 (add-to-list 'auto-mode-alist '("\.scala" . scala-mode))
-(add-to-list 'load-path (concat vendor-dir "ensime/elisp/"))
+
+(defun reactormonk-parent-directory (dir &optional count)
+  (let ((parent-dir (unless (equal "/" dir)
+                      (file-name-directory (directory-file-name dir)))))
+    (if (and count (> count 0))
+        (reactormonk-parent-directory parent-dir (- count 1))
+      parent-dir)))
+
+(setq ensime-default-server-root (concat (reactormonk-parent-directory (locate-library "ensime") 3) "dist"))
 (require 'ensime)
 (add-hook 'scala-mode-hook 'ensime-scala-mode-hook)
 
