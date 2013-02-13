@@ -112,6 +112,11 @@ If `end' is nil `begin-or-fun' will be treated as a fun."
                 begin-or-fun))
         surround-pairs-alist))
 
+(defun add-to-hooks (fun hooks)
+  "Add function to hooks"
+  (dolist (hook hooks)
+    (add-hook hook fun)))
+
 (add-to-hooks (lambda ()
                 (cofi/surround-add-pair "`" "`"  "'"))
               '(emacs-lisp-mode-hook lisp-mode-hook))
