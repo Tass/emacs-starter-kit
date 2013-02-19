@@ -143,7 +143,7 @@ If `end' is nil `begin-or-fun' will be treated as a fun."
                 (cofi/surround-add-pair "m" ":meth:`" "`")
                 (cofi/surround-add-pair "a" ":attr:`" "`")
                 (cofi/surround-add-pair "e" ":exc:`" "`"))
-              '(rst-mode-hook python-mode-hook)))
+              '(rst-mode-hook python-mode-hook))
 
 (defun cofi/evil-cursor ()
   "Change cursor color according to evil-state."
