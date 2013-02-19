@@ -101,6 +101,15 @@
 (require 'surround)
 (global-surround-mode 1)
 
+(define-key evil-normal-state-map "gs"
+  (lambda ()
+    (interactive)
+    (call-interactively
+     (or
+      (lookup-key (symbol-value (intern (format "%s-map" major-mode))) (kbd "M-."))
+      'find-tag))))
+
+
 (defun cofi/surround-add-pair (trigger begin-or-fun &optional end)
   "Add a surround pair.
 If `end' is nil `begin-or-fun' will be treated as a fun."
