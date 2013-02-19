@@ -151,6 +151,15 @@ If `end' is nil `begin-or-fun' will be treated as a fun."
 (require 'undo-tree)
 (global-undo-tree-mode)
 
+(autoload
+  'ace-jump-mode-pop-mark
+  "ace-jump-mode"
+  "Ace jump back:-)"
+  t)
+(eval-after-load "ace-jump-mode"
+  '(ace-jump-mode-enable-mark-sync))
+(define-key evil-normal-state-map (kbd "SPC") 'ace-jump-mode)
+
 (autoload 'pkgbuild-mode "pkgbuild-mode.el" "PKGBUILD mode." t)
 (setq auto-mode-alist (append '(("/PKGBUILD$" . pkgbuild-mode)) auto-mode-alist))
 
