@@ -294,6 +294,10 @@ If `end' is nil `begin-or-fun' will be treated as a fun."
  'org-babel-load-languages
  '((dot . t)))
 
+(org-babel-do-load-languages
+ 'org-babel-load-languages
+ '((R . t)))
+
 (require 'kwin)
 
 ;;; init.el ends here
