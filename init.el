@@ -210,6 +210,8 @@ If `end' is nil `begin-or-fun' will be treated as a fun."
     ad-do-it))
 (ad-activate 'save-buffers-kill-terminal)
 
+(global-set-key (kbd "C-x C-b") (kbd "C-x b"))
+
 (require 'le-eval-and-insert-results)
 (define-key lisp-interaction-mode-map (kbd "C-c x") 'le::eval-and-insert-results)
 (setq show-paren-style 'expression)
