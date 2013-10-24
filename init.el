@@ -57,11 +57,6 @@
 
 (require 'nimrod-mode)
 
-(setq inferior-lisp-program "/usr/bin/sbcl")
-(add-to-list 'load-path "/usr/share/emacs/site-lisp/slime/")
-(require 'slime-autoloads)
-(slime-setup '(slime-fancy slime-sprof))
-
 (require 'evil)
 (evil-mode 1)
 (setq evil-auto-indent 't)
@@ -77,7 +72,7 @@
 (add-to-list 'interpreter-mode-alist '("ruby" . enh-ruby-mode))
 (add-hook 'enh-ruby-mode-hook
   (function (lambda ()
-              (setq evil-shift-width ruby-indent-level)
+              (setq evil-shift-width enh-ruby-indent-level)
               (define-key enh-ruby-mode-map "\C-c-"    'enh-ruby-insert-end)
               )))
 (evil-set-initial-state "Ensime-Popup-Buffer" 'emacs)
@@ -265,8 +260,6 @@ If `end' is nil `begin-or-fun' will be treated as a fun."
 ;; store your autosaved files in your system's tmp dir
 (setq auto-save-file-name-transforms `((".*" ,temporary-file-directory t)))
 
-(load "auctex.el" nil t t)
-(load "preview-latex.el" nil t t)
 (require 'org-babel-qtree)
 
 (require 'saveplace)
@@ -301,6 +294,11 @@ If `end' is nil `begin-or-fun' will be treated as a fun."
  '((R . t)))
 
 (require 'kwin)
+
+(require 'ox-reveal)
+
+(setq org-todo-keywords
+   '((sequence "TODO" "IN-PROGRESS" "PENDING" "|"  "DONE" "FAIL" "DELEGATED" "CANCELLED")))
 
 ;;; init.el ends here
 
