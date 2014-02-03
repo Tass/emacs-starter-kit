@@ -302,6 +302,8 @@ If `end' is nil `begin-or-fun' will be treated as a fun."
 (setq org-todo-keywords
    '((sequence "TODO" "IN-PROGRESS" "PENDING" "|"  "DONE" "FAIL" "DELEGATED" "CANCELLED")))
 
+(load "xetex")
+
 ;;; init.el ends here
 
 (put 'erase-buffer 'disabled nil)
