@@ -164,6 +164,8 @@ If `end' is nil `begin-or-fun' will be treated as a fun."
   '(ace-jump-mode-enable-mark-sync))
 (define-key evil-normal-state-map (kbd "SPC") 'ace-jump-mode)
 
+(define-key evil-normal-state-map "^" 'delete-indentation)
+
 (autoload 'pkgbuild-mode "pkgbuild-mode.el" "PKGBUILD mode." t)
 (setq auto-mode-alist (append '(("/PKGBUILD$" . pkgbuild-mode)) auto-mode-alist))
 
