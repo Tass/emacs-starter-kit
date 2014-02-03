@@ -42,6 +42,17 @@
              (:name org-reveal :type github :pkgname "yjwen/org-reveal" :description "Exports Org-mode contents to Reveal.js HTML presentation." :depends org-mode :features ox-reveal))
  (popup status "installed" recipe
         (:name popup :website "https://github.com/auto-complete/popup-el" :description "Visual Popup Interface Library for Emacs" :type github :pkgname "auto-complete/popup-el"))
+ (pymacs status "installed" recipe
+         (:name pymacs :description "Interface between Emacs Lisp and Python" :type github :pkgname "pinard/Pymacs" :prepare
+                (progn
+                  (el-get-envpath-prepend "PYTHONPATH" default-directory)
+                  (autoload 'pymacs-load "pymacs" nil t)
+                  (autoload 'pymacs-eval "pymacs" nil t)
+                  (autoload 'pymacs-exec "pymacs" nil t)
+                  (autoload 'pymacs-call "pymacs")
+                  (autoload 'pymacs-apply "pymacs"))
+                :build
+                ("make")))
  (scala-mode status "installed" recipe
              (:name scala-mode :description "Major mode for editing Scala code." :type git :url "https://github.com/scala/scala-dist.git" :build
                     `(("make -C tool-support/src/emacs" ,(concat "ELISP_COMMAND=" el-get-emacs)))
