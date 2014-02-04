@@ -20,16 +20,18 @@
     (loop for line in (split-string string "\n")
           if (not (string-match "^[\\s\\t]*\\\\" line))
           do (princ (concat (replace-regexp-in-string
-                             " \\_<\\w+\\_>" (lambda (x) (concat "\\\\\\\\" (substring x 1))) 
+                             "\\\\\\\\_" " "  ; hack so <space>_ is possible
                              (replace-regexp-in-string
-                              (regexp-quote "]") " ]"             ; qtree needs a space
+                               " \\_<\\w+\\_>" (lambda (x) (concat "\\\\\\\\" (substring x 1))) 
+                               (replace-regexp-in-string
+                                (regexp-quote "]") " ]" ; qtree needs a space
                                         ; before every closing
                                         ; bracket.
-                              (replace-regexp-in-string
-                               (regexp-quote "[]") "[.{}]" line)) ; empty leaf
+                                (replace-regexp-in-string
+                                 (regexp-quote "[]") "[.{}]" line)) ; empty leaf
                                         ; nodes, see
                                         ; http://tex.stackexchange.com/questions/75915
-                             )
+                               ))
                                         ; http://tex.stackexchange.com/questions/75217
                      "\n"))
           else do (princ (concat line "\n"))
