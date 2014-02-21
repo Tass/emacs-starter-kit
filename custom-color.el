@@ -23,7 +23,6 @@
      (font-lock-string-face ((t (:foreground "#D6199F"))))
      (font-lock-doc-string-face ((t (:foreground "#D6199F"))))
      (font-lock-type-face ((t (:foreground "#A89E00"))))
-     (show-paren-match-face ((t (:background "#050505"))))
      )))
 
 (custom-color)

@@ -211,7 +211,6 @@ If `end' is nil `begin-or-fun' will be treated as a fun."
 
 (require 'le-eval-and-insert-results)
 (define-key lisp-interaction-mode-map (kbd "C-c x") 'le::eval-and-insert-results)
-(setq show-paren-style 'expression)
 
 (require 'yasnippet)
 (yas/global-mode 1)
@@ -303,6 +302,9 @@ If `end' is nil `begin-or-fun' will be treated as a fun."
    '((sequence "TODO" "IN-PROGRESS" "PENDING" "|"  "DONE" "FAIL" "DELEGATED" "CANCELLED")))
 
 (load "xetex")
+
+(require 'mic-paren)
+(paren-activate)
 
 ;;; init.el ends here
 
