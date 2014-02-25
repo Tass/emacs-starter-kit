@@ -44,6 +44,11 @@ http://tex.stackexchange.com/questions/75217"
    (regexp-quote "[]") "[.{}]" line)
   line)
 
+(defun org-babel:qtree:c-structure (line)
+  (replace-regexp-in-string "\\[\\.\\(\\w+\\) "
+                            (lambda (x) (concat "{" x "\\\\\\\\$\\\\uparrow = \\\\downarrow$} ")) line t)
+  line)
+
 (defun org-babel:qtree-modify-tree (functions-to-call line)
   "This function modifies a line with the listed functions in
   order. The function names are created with (concat
