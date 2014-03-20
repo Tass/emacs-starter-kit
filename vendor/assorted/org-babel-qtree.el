@@ -31,23 +31,20 @@
 
 (defun org-babel:qtree:space (line)
   "qtree needs a space before every closing bracket."
-  (message (pp line))
   (replace-regexp-in-string
-   (regexp-quote "]") " ]" line)
-  line)
+   (regexp-quote "]") " ]" line))
 
 (defun org-babel:qtree:empty-leaves (line)
   "empty leaf nodes, see
 http://tex.stackexchange.com/questions/75915
 http://tex.stackexchange.com/questions/75217"
   (replace-regexp-in-string
-   (regexp-quote "[]") "[.{}]" line)
-  line)
+   (regexp-quote "[]") "[.{}]" line))
 
 (defun org-babel:qtree:c-structure (line)
   (replace-regexp-in-string "\\[\\.\\(\\w+\\) "
-                            (lambda (x) (concat "{" x "\\\\\\\\$\\\\uparrow = \\\\downarrow$} ")) line t)
-  line)
+                            "[.{\\1\\\\\\\\↑=↓} "
+                            line t))
 
 (defun org-babel:qtree-modify-tree (functions-to-call line)
   "This function modifies a line with the listed functions in
