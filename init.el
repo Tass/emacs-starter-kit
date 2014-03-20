@@ -298,13 +298,10 @@ If `end' is nil `begin-or-fun' will be treated as a fun."
 
 (require 'ox-reveal)
 
-(setq org-todo-keywords
-   '((sequence "TODO" "IN-PROGRESS" "PENDING" "|"  "DONE" "FAIL" "DELEGATED" "CANCELLED")))
-
 (load "xetex")
 
 (require 'mic-paren)
-(paren-activate)
+
 
 ;;; init.el ends here
 
