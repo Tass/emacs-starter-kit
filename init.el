@@ -48,7 +48,6 @@
         (reactormonk-parent-directory parent-dir (- count 1))
       parent-dir)))
 
-(setq ensime-default-server-root (concat (reactormonk-parent-directory (locate-library "ensime") 3) "dist"))
 (require 'ensime)
 (add-hook 'scala-mode-hook 'ensime-scala-mode-hook)
 
@@ -283,16 +282,10 @@ If `end' is nil `begin-or-fun' will be treated as a fun."
 (add-to-list 'auto-mode-alist '("stack\\(exchange\\|overflow\\)\\.com\\.[a-z0-9]+\\.txt" . markdown-mode))
 
 (setq ac-trigger-key "TAB")
-(require 'projectile)
-(projectile-global-mode)
 
 (org-babel-do-load-languages
  'org-babel-load-languages
- '((dot . t)))
-
-(org-babel-do-load-languages
- 'org-babel-load-languages
- '((R . t)))
+ '((dot . t) (R . t)))
 
 (require 'kwin)
 
@@ -302,6 +295,14 @@ If `end' is nil `begin-or-fun' will be treated as a fun."
 
 (require 'mic-paren)
 
+(setq org-default-notes-file "~/gtd/notes.org")
+(define-key global-map "\C-cc" 'org-capture)
+
+(define-key evil-motion-state-map (kbd "RET") nil)
+(define-key evil-visual-state-map (kbd "RET") nil)
+(define-key evil-normal-state-map (kbd "RET") nil)
+
+;; (set-face-attribute 'default nil :font "MonacoB")
 
 ;;; init.el ends here
 

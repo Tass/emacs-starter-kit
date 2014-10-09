@@ -25,6 +25,5 @@
      (font-lock-type-face ((t (:foreground "#A89E00"))))
      )))
 
-(set-face-attribute 'default nil :font "MonacoB")
 (custom-color)
 (provide 'custom-color)

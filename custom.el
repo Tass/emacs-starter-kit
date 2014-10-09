@@ -12,6 +12,7 @@
  '(nimrod-command "/home/tass/dev/nimrod/Nimrod/bin/nimrod")
  '(nxml-slash-auto-complete-flag t)
  '(org-export-latex-inline-image-extensions (quote ("pdf" "jpeg" "jpg" "png" "ps" "eps" "svg")))
+ '(org-file-apps (quote ((auto-mode . emacs) ("\\.mm\\'" . default) ("\\.x?html?\\'" . default) ("\\.pdf\\'" . "okular %s"))))
  '(python-indent-offset 2)
  '(send-mail-function nil)
  '(shell-prompt-pattern "^[^#$%>

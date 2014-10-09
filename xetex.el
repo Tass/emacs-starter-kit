@@ -3,6 +3,9 @@
 (setf org-latex-default-packages-alist
       (remove '("AUTO" "inputenc" t) org-latex-default-packages-alist))
 
+(setf org-latex-default-packages-alist
+      (remove '("T1" "fontenc" t) org-latex-default-packages-alist))
+
 (add-to-list 'org-latex-packages-alist '("" "xltxtra" t))
 ;; choose Linux Libertine O as serif and Linux Biolinum O as sans-serif fonts
 (add-to-list 'org-latex-packages-alist '("" "libertineotf" t))
