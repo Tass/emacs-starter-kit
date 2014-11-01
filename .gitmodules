@@ -49,3 +49,6 @@
 [submodule "vendor/evil-surround"]
 	path = vendor/evil-surround
 	url = https://github.com/timcharper/evil-surround.git
+[submodule "vendor/ido-hacks"]
+	path = vendor/ido-hacks
+	url = https://github.com/scottjad/ido-hacks.git

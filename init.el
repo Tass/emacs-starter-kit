@@ -51,9 +51,6 @@
 (require 'ensime)
 (add-hook 'scala-mode-hook 'ensime-scala-mode-hook)
 
-(require 'helm-config)
-(helm-mode 1)
-
 (require 'nimrod-mode)
 
 (require 'evil)
@@ -301,6 +298,10 @@ If `end' is nil `begin-or-fun' will be treated as a fun."
 (define-key evil-motion-state-map (kbd "RET") nil)
 (define-key evil-visual-state-map (kbd "RET") nil)
 (define-key evil-normal-state-map (kbd "RET") nil)
+
+(ido-mode 't)
+(global-set-key (kbd "M-x") 'smex)
+(require 'ido-hacks)
 
 ;; (set-face-attribute 'default nil :font "MonacoB")
 
