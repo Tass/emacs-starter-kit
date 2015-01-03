@@ -51,7 +51,7 @@
 (require 'ensime)
 (add-hook 'scala-mode-hook 'ensime-scala-mode-hook)
 
-(require 'nimrod-mode)
+(require 'nim-mode)
 
 (require 'evil)
 (evil-mode 1)
@@ -302,6 +302,8 @@ If `end' is nil `begin-or-fun' will be treated as a fun."
 (ido-mode 't)
 (global-set-key (kbd "M-x") 'smex)
 (require 'ido-hacks)
+
+(setq org-latex-listings 'minted)
 
 ;; (set-face-attribute 'default nil :font "MonacoB")
 

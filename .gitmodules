@@ -1,9 +1,6 @@
 [submodule "icicles"]
 	path = vendor/icicles
 	url = https://github.com/emacsmirror/icicles.git
-[submodule "nimrod-mode"]
-	path = vendor/nimrod-mode
-	url = https://github.com/eegg/nimrod-mode.git
 [submodule "evil"]
 	path = vendor/evil
 	url = git://gitorious.org/evil/evil.git
