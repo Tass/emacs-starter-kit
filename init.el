@@ -7,7 +7,7 @@
 
 ;; Load path etc.
 
-(add-to-list 'load-path user-emacs-directory)
+(add-to-list 'load-path (concat user-emacs-directory "lisp"))
 
 ;; Load up ELPA, the package manager
 
