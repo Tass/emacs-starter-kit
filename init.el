@@ -120,6 +120,7 @@
   (define-key evil-motion-state-map (kbd "RET") nil)
   (define-key evil-visual-state-map (kbd "RET") nil)
   (define-key evil-normal-state-map (kbd "RET") nil)
+  (define-key evil-normal-state-map (kbd "^") 'delete-indentation)
   )
 
 (use-package enh-ruby-mode
