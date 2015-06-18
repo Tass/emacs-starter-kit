@@ -162,8 +162,7 @@
   (edit-server-start)
   )
 
-(use-package ess-site
-  :load-path "/usr/share/emacs/site-lisp/ess"
+(use-package ess
   :commands R
   )
 
