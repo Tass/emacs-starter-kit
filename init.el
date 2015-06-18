@@ -60,7 +60,7 @@
 
 (use-package scala-mode2
   :config
-  :mode "\\.scala$"
+  :mode ("\\.scala$" . scala-mode)
   )
 
 (use-package ensime
