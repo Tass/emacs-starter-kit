@@ -173,14 +173,6 @@
   (setq yas/snippet-dirs '((concat user-emacs-directory "snippets")))
   )
 
-(use-package auto-complete-config
-  :config
-  (add-to-list 'ac-dictionary-directories (concat vendor-dir "auto-complete/dict"))
-  (add-to-list 'ac-sources 'ac-source-yasnippet)
-  (ac-config-default)
-  (setq ac-trigger-key "TAB")
-  )
-
 (use-package coffee-mode
   :mode "\.coffee$"
   :mode "Cakefile"
