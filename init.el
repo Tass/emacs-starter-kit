@@ -70,6 +70,11 @@
 
 (use-package nim-mode)
 
+(use-package company-nim
+  :config
+  (setq nim-nimsuggest-path "~/dev/nim/nim/bin/nimsuggest")
+  )
+
 (use-package evil
   :ensure t
   :config
@@ -221,6 +226,22 @@
 (use-package ox-reveal)
 
 (use-package mic-paren)
+
+(use-package company-mode
+  :config
+  (global-company-mode)
+  (defun complete-or-indent ()
+    (interactive)
+    (if (company-manual-begin)
+        (company-complete-common)
+      (indent-according-to-mode)))
+  (global-set-key [tab] 'tab-indent-or-complete))
+
+(use-package nim-mode
+  :config
+  (setq nim-nimsuggest-path "/home/tass/dev/nim/nim/bin/nimsuggest"))
+
+(use-package company-nim)
 
                                         ; Stuff for window management
 (defun detach-window () (interactive) (let ((new-frame (save-excursion(make-frame-command)))) (delete-window) (select-frame new-frame)))
