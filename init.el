@@ -298,4 +298,7 @@
 
 ;; (set-face-attribute 'default nil :font "MonacoB")
 
+(setq org-clock-persist 'history)
+(org-clock-persistence-insinuate)
+
 ;;; init.el ends here
