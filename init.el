@@ -18,18 +18,18 @@
    (lambda (element) (add-to-list list-var element append compare-fn))
    elements))
 
-(add-to-list 'load-path "~/.emacs.d/el-get/el-get")
-(require 'el-get)
-(el-get 'sync)
-
 (require 'package)
+(package-initialize)
 (add-items-to-list 'package-archives
                    '(
                      ("marmalade" . "http://marmalade-repo.org/packages/")
                      ("melpa" . "http://melpa.milkbox.net/packages/")
+                     ("org" . "http://orgmode.org/elpa/")
                      )
                    t)
-(package-initialize)
+
+(setq package-pinned-archives '())
+(add-to-list 'package-pinned-archives '(org-plus-contrib . "org"))
 
 (setq vendor-dir (concat user-emacs-directory "vendor/"))
 (add-to-list 'load-path vendor-dir)
@@ -149,106 +149,108 @@
   (global-undo-tree-mode)
   )
 
-(use-package pkgbuild-mode
-  :mode "/PKGBUILD$"
-  )
-
-(use-package gist)
-
-(use-package autopair)
-
-(use-package edit-server
-  :config
-  (edit-server-start)
-  )
-
-(use-package ess
-  :commands R
-  )
-
-(use-package yasnippet
-  :config
-  (yas/global-mode 1)
-  (setq yas/snippet-dirs '((concat user-emacs-directory "snippets")))
-  )
-
-(use-package coffee-mode
-  :mode "\.coffee$"
-  :mode "Cakefile"
-  :config
-  (defun coffee-custom ()
-    "coffee-mode-hook"
-
-    ;; CoffeeScript uses two spaces.
-    (make-local-variable 'tab-width)
-    (set 'tab-width 2)
-
-    ;; If you don't want your compiled files to be wrapped
-    (setq coffee-args-compile '("-c" "--bare"))
-
-    ;; *Messages* spam
-    (setq coffee-debug-mode t)
-
-    ;; Compile '.coffee' files on every save
-    (and (file-exists-p (buffer-file-name))
-         (file-exists-p (coffee-compiled-file-name))
-         (coffee-cos-mode t)))
-
-  (add-hook 'coffee-mode-hook 'coffee-custom)
-  )
-
-(use-package markdown-mode
-  :mode "\\.md$"
-  :mode "stack\\(exchange\\|overflow\\)\\.com\\.[a-z0-9]+\\.txt"
-  )
-
-(use-package graphviz-dot-mode
-  :mode "\\.dot$"
-  )
-
-(use-package saveplace
-  :config
-  (setq-default save-place t)
-  (setq save-place-file "~/.emacs.d/saved-places")
-  )
-
-(use-package kwin)
-
-(use-package ox-reveal)
-
-(use-package mic-paren)
-
-(use-package company-mode
-  :config
-  (global-company-mode)
-  (defun complete-or-indent ()
-    (interactive)
-    (if (company-manual-begin)
-        (company-complete-common)
-      (indent-according-to-mode)))
-  (global-set-key [tab] 'tab-indent-or-complete))
-
-(use-package nim-mode
-  :config
-  (setq nim-nimsuggest-path "/home/tass/dev/nim/nim/bin/nimsuggest"))
-
-(use-package company-nim)
-
-                                        ; Stuff for window management
-(defun detach-window () (interactive) (let ((new-frame (save-excursion(make-frame-command)))) (delete-window) (select-frame new-frame)))
-(global-set-key (kbd "C-x 2") 'detach-window)
-
-                                        ; set frame title so the window manager can read it
-(setq frame-title-format
-      '(:eval (or (buffer-file-name (current-buffer)) "#<none>")))
-
-                                        ; block C-x C-c
-(defadvice save-buffers-kill-terminal (around dont-kill-my-x-session-kthx)
-  "Disable C-x C-c under X."
-  (if (or (eq window-system 'x) (eq window-system 'w32))
-      (message "I'm afraid I can't do that.")
-    ad-do-it))
-(ad-activate 'save-buffers-kill-terminal)
+;(use-package pkgbuild-mode
+;  :mode "/PKGBUILD$"
+;  )
+;
+;(use-package gist)
+;
+;(use-package autopair)
+;
+;(use-package edit-server
+;  :config
+;  (edit-server-start)
+;  )
+;
+;(use-package ess
+;  :commands R
+;  )
+;
+;(use-package yasnippet
+;  :config
+;  (yas/global-mode 1)
+;  (setq yas/snippet-dirs '((concat user-emacs-directory "snippets")))
+;  )
+;
+;(use-package coffee-mode
+;  :mode "\.coffee$"
+;  :mode "Cakefile"
+;  :config
+;  (defun coffee-custom ()
+;    "coffee-mode-hook"
+;
+;    ;; CoffeeScript uses two spaces.
+;    (make-local-variable 'tab-width)
+;    (set 'tab-width 2)
+;
+;    ;; If you don't want your compiled files to be wrapped
+;    (setq coffee-args-compile '("-c" "--bare"))
+;
+;    ;; *Messages* spam
+;    (setq coffee-debug-mode t)
+;
+;    ;; Compile '.coffee' files on every save
+;    (and (file-exists-p (buffer-file-name))
+;         (file-exists-p (coffee-compiled-file-name))
+;         (coffee-cos-mode t)))
+;
+;  (add-hook 'coffee-mode-hook 'coffee-custom)
+;  )
+;
+;(use-package markdown-mode
+;  :mode "\\.md$"
+;  :mode "stack\\(exchange\\|overflow\\)\\.com\\.[a-z0-9]+\\.txt"
+;  )
+;
+;(use-package graphviz-dot-mode
+;  :mode "\\.dot$"
+;  )
+;
+;(use-package saveplace
+;  :config
+;  (setq-default save-place t)
+;  (setq save-place-file "~/.emacs.d/saved-places")
+;  )
+;
+;(use-package kwin)
+;
+;(use-package ox-reveal)
+;
+;(use-package mic-paren)
+;
+;(use-package company-mode
+;  :config
+;  (global-company-mode)
+;  (defun complete-or-indent ()
+;    (interactive)
+;    (if (company-manual-begin)
+;        (company-complete-common)
+;      (indent-according-to-mode)))
+;  (global-set-key [tab] 'tab-indent-or-complete))
+;
+;(use-package nim-mode
+;  :config
+;  (setq nim-nimsuggest-path "/home/tass/dev/nim/nim/bin/nimsuggest"))
+;
+;(use-package company-nim)
+;
+;(add-hook 'emacs-lisp-mode 'paredit-mode)
+;
+;                                        ; Stuff for window management
+;(defun detach-window () (interactive) (let ((new-frame (save-excursion(make-frame-command)))) (delete-window) (select-frame new-frame)))
+;(global-set-key (kbd "C-x 2") 'detach-window)
+;
+;                                        ; set frame title so the window manager can read it
+;(setq frame-title-format
+;      '(:eval (or (buffer-file-name (current-buffer)) "#<none>")))
+;
+;                                        ; block C-x C-c
+;(defadvice save-buffers-kill-terminal (around dont-kill-my-x-session-kthx)
+;  "Disable C-x C-c under X."
+;  (if (or (eq window-system 'x) (eq window-system 'w32))
+;      (message "I'm afraid I can't do that.")
+;    ad-do-it))
+;(ad-activate 'save-buffers-kill-terminal)
 
 (global-set-key (kbd "C-x C-b") (kbd "C-x b"))
 
@@ -288,6 +290,13 @@
 (put 'erase-buffer 'disabled nil)
 
 ;; (set-face-attribute 'default nil :font "MonacoB")
+;; (set-face-attribute 'default nil :font "Input Mono Condensed")
+
+(defun what-face (pos)
+  (interactive "d")
+  (let ((face (or (get-char-property (point) 'read-face-name)
+                  (get-char-property (point) 'face))))
+    (if face (message "Face: %s" face) (message "No face at %d" pos))))
 
 (setq org-clock-persist 'history)
 (org-clock-persistence-insinuate)
