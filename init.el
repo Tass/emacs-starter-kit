@@ -301,4 +301,6 @@
 (setq org-clock-persist 'history)
 (org-clock-persistence-insinuate)
 
+(set-time-zone-rule "CET")
+
 ;;; init.el ends here
