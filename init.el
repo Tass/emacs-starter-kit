@@ -76,8 +76,8 @@
 
 (use-package company-nim
   :config
-  (setq nim-nimsuggest-path "~/dev/nim/nim/bin/nimsuggest")
-  )
+  (setq nim-nimsuggest-path "~/dev/nim/nimsuggest/bin/nimsuggest")
+  (add-to-list 'company-backends 'company-nim))
 
 (use-package evil
   :ensure t
