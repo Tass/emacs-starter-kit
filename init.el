@@ -65,13 +65,7 @@
 
 (use-package company
   :config
-  (global-company-mode)
-  (defun complete-or-indent ()
-    (interactive)
-    (if (company-manual-begin)
-        (company-complete-common)
-      (indent-according-to-mode)))
-  (global-set-key [tab] 'tab-indent-or-complete))
+  (global-company-mode))
 
 (use-package ensime
   :config
