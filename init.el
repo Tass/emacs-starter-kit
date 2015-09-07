@@ -230,6 +230,10 @@
 
 (add-hook 'emacs-lisp-mode 'paredit-mode)
 
+(use-package haskell-mode
+  :config
+  (add-hook 'haskell-mode-hook 'haskell-indentation-mode))
+
                                         ; Stuff for window management
 (defun detach-window () (interactive) (let ((new-frame (save-excursion(make-frame-command)))) (delete-window) (select-frame new-frame)))
 (global-set-key (kbd "C-x 2") 'detach-window)
