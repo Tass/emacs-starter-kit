@@ -76,7 +76,7 @@
 (use-package ensime
   :config
   (add-hook 'scala-mode-hook 'ensime-scala-mode-hook)
-  )
+  (add-hook 'ensime-popup-buffer-mode-hook 'evil-emacs-state))
 
 (use-package nim-mode)
 
