@@ -57,7 +57,7 @@
  '(sh-indentation 2)
  '(shell-prompt-pattern "^[^#$%>
 ]*[#$%>~] *")
- '(show-paren-mode nil))
+ '(show-paren-mode t))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -65,12 +65,12 @@
  ;; If there is more than one, they won't work right.
  '(hl-line ((t (:background "gray14"))))
  '(paren-face-match ((t (:background "orange red" :foreground "white"))))
- '(rainbow-delimiters-depth-1-face ((t (:foreground "#0000ff"))))
- '(rainbow-delimiters-depth-2-face ((t (:foreground "#003bff"))))
- '(rainbow-delimiters-depth-3-face ((t (:foreground "#0065ff"))))
- '(rainbow-delimiters-depth-4-face ((t (:foreground "#0080ff"))))
- '(rainbow-delimiters-depth-5-face ((t (:foreground "#0096ff"))))
- '(rainbow-delimiters-depth-6-face ((t (:foreground "#00b0ff"))))
- '(rainbow-delimiters-depth-7-face ((t (:foreground "#00cfff"))))
- '(rainbow-delimiters-depth-8-face ((t (:foreground "#00eaff"))))
+ '(rainbow-delimiters-depth-1-face ((t (:foreground "#0070ff"))))
+ '(rainbow-delimiters-depth-2-face ((t (:foreground "#0080ff"))))
+ '(rainbow-delimiters-depth-3-face ((t (:foreground "#0090ff"))))
+ '(rainbow-delimiters-depth-4-face ((t (:foreground "#00a0ff"))))
+ '(rainbow-delimiters-depth-5-face ((t (:foreground "#00b0ff"))))
+ '(rainbow-delimiters-depth-6-face ((t (:foreground "#00c0ff"))))
+ '(rainbow-delimiters-depth-7-face ((t (:foreground "#00d0ff"))))
+ '(rainbow-delimiters-depth-8-face ((t (:foreground "#00e0ff"))))
  '(rainbow-delimiters-depth-9-face ((t (:foreground "#00ffff")))))
