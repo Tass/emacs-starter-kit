@@ -48,15 +48,6 @@
 (require 'diminish)
 (require 'bind-key)
 
-(use-package org
-  :config
-  (setq org-confirm-babel-evaluate nil)
-  (org-babel-do-load-languages
-   'org-babel-load-languages
-   '((dot . t) (R . t)))
-  (setq org-default-notes-file "~/gtd/notes.org")
-  (define-key global-map "\C-cc" 'org-capture)
-  )
 
 (use-package scala-mode2
   :config
@@ -233,6 +224,22 @@
   :config
   (add-hook 'haskell-mode-hook 'haskell-indentation-mode))
 
+(use-package evil-smartparens
+  :config
+  (add-hook 'smartparens-enabled-hook #'evil-smartparens-mode))
+
+(use-package smartparens
+  :config
+  (require 'smartparens-config)
+  (require 'smartparens-scala)
+  (add-hook 'lisp-mode-hook 'smartparens-mode)
+  (add-hook 'scala-mode2-hook 'smartparens-mode)
+  (sp-local-pair 'scala-mode "(" nil :post-handlers '(("||\n[i]" "RET")))
+  (sp-local-pair 'scala-mode "{" nil :post-handlers '(("||\n[i]" "RET") ("| " "SPC")))
+  (electric-indent-mode 0)
+  (remove-hook 'post-self-insert-hook
+               'electric-indent-post-self-insert-function))
+
                                         ; Stuff for window management
 (defun detach-window () (interactive) (let ((new-frame (save-excursion(make-frame-command)))) (delete-window) (select-frame new-frame)))
 (global-set-key (kbd "C-x 2") 'detach-window)
@@ -260,8 +267,6 @@
 
 ;; store your autosaved files in your system's tmp dir
 (setq auto-save-file-name-transforms `((".*" ,temporary-file-directory t)))
-
-(require 'org-babel-qtree)
 
 (setq custom-file (concat user-emacs-directory "custom.el"))
 (load custom-file)
@@ -295,9 +300,46 @@
                   (get-char-property (point) 'face))))
     (if face (message "Face: %s" face) (message "No face at %d" pos))))
 
+;; org-mode
+
+(use-package org
+  :config
+  (setq org-confirm-babel-evaluate nil)
+  (org-babel-do-load-languages
+   'org-babel-load-languages
+   '(
+     (dot . t)
+     (R . t)
+     (sh . t)
+     (python . t)
+     (R . t)
+     (ruby . t)
+     (ditaa . t)
+     (dot . t)
+     (octave . t)
+     (sqlite . t)
+     (perl . t)))
+  (setq org-default-notes-file "~/gtd/notes.org")
+  (define-key global-map "\C-cc" 'org-capture)
+  )
+
+(use-package org-bullets)
+
+(require 'org-babel-qtree)
+
 (setq org-clock-persist 'history)
 (org-clock-persistence-insinuate)
 
 (set-time-zone-rule "CET")
+
+(global-prettify-symbols-mode)
+
+;; (require 'spaceline-config)
+;; (spaceline-emacs-theme)
+
+(require 'ess)
+
+(add-hook 'prog-mode-hook
+          (lambda() (setq show-trailing-whitespace t)))
 
 ;;; init.el ends here
