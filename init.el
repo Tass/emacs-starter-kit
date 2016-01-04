@@ -233,7 +233,7 @@
   (require 'smartparens-config)
   (require 'smartparens-scala)
   (add-hook 'lisp-mode-hook 'smartparens-mode)
-  (add-hook 'scala-mode2-hook 'smartparens-mode)
+  (add-hook 'scala-mode-hook 'smartparens-mode)
   (sp-local-pair 'scala-mode "(" nil :post-handlers '(("||\n[i]" "RET")))
   (sp-local-pair 'scala-mode "{" nil :post-handlers '(("||\n[i]" "RET") ("| " "SPC")))
   (electric-indent-mode 0)
