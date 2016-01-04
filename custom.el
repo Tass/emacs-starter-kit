@@ -20,6 +20,7 @@
  '(ido-everywhere t)
  '(ido-use-filename-at-point (quote guess))
  '(nim-command "/home/tass/dev/nimrod/Nimrod/bin/nim")
+ '(nim-nimsuggest-path "/home/tass/dev/nim/nimsuggest/nimsuggest")
  '(nxml-slash-auto-complete-flag t)
  '(org-agenda-files (quote ("~/.org-jira/vidcast.org" "~/.org-jira/DV.org")))
  '(org-export-latex-inline-image-extensions (quote ("pdf" "jpeg" "jpg" "png" "ps" "eps" "svg")))
@@ -50,7 +51,10 @@
       ("\\subsubsection{%s}" . "\\subsubsection*{%s}")))))
  '(org-tree-slide-slide-in-effect nil)
  '(python-indent-offset 2)
+ '(scala-indent:indent-value-expression t)
  '(send-mail-function nil)
+ '(sh-basic-offset 2)
+ '(sh-indentation 2)
  '(shell-prompt-pattern "^[^#$%>
 ]*[#$%>~] *")
  '(show-paren-mode nil))
