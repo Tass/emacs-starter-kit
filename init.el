@@ -240,6 +240,9 @@
   (remove-hook 'post-self-insert-hook
                'electric-indent-post-self-insert-function))
 
+(use-package rainbow-delimiters
+  (add-hook 'prog-mode-hook #'rainbow-delimiters-mode))
+
                                         ; Stuff for window management
 (defun detach-window () (interactive) (let ((new-frame (save-excursion(make-frame-command)))) (delete-window) (select-frame new-frame)))
 (global-set-key (kbd "C-x 2") 'detach-window)
@@ -341,5 +344,7 @@
 
 (add-hook 'prog-mode-hook
           (lambda() (setq show-trailing-whitespace t)))
+(add-hook 'prog-mode-hook
+          'show-paren-mode)
 
 ;;; init.el ends here
